@@ -1,0 +1,345 @@
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Improve text rendering */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* Fallback color */
+}
+
+/* Background Styles */
+.background {
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  background-size: cover;
+  background-position: center;
+  left: -5%;
+  top: -5%;
+  will-change: transform; /* Optimize for animations */
+}
+
+.bg1 {
+  background-image: url("https://raw.githubusercontent.com/signuppotter/Paloma2/refs/heads/main/BG1.webp");
+  z-index: 1;
+}
+
+.bg2 {
+  background-image: url("https://raw.githubusercontent.com/signuppotter/Paloma2/refs/heads/main/BG2B2.webp");
+  z-index: 4;
+  transform: translateY(100%);
+}
+
+/* Door Styles */
+.door-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  overflow: hidden;
+}
+
+.door-wrapper {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.door-wrapper.left {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.door-wrapper.right {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.door {
+  width: 50vw;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  transform-origin: center;
+  will-change: transform, opacity; /* Optimize for animations */
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.door-left {
+  background-image: url("https://raw.githubusercontent.com/signuppotter/Paloma2/refs/heads/main/doorLeft.webp");
+  background-size: cover;
+  background-position: right center;
+  right: 0;
+}
+
+.door-right {
+  background-image: url("https://raw.githubusercontent.com/signuppotter/Paloma2/refs/heads/main/doorRight.webp");
+  background-size: cover;
+  background-position: left center;
+  left: 0;
+}
+
+/* Decorative Elements */
+.cloud,
+.bird {
+  position: absolute;
+  z-index: 2;
+  opacity: 1;
+  will-change: transform; /* Optimize for animations */
+}
+
+.cloud {
+  top: 5%;
+  left: -200px;
+  width: 200px;
+  height: auto;
+}
+
+.bird {
+  top: 3%;
+  left: -100px;
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+/* Glow Effects */
+.glow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.glow-effect {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform; /* Optimize for animations */
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  display: flex; /* Flex display added back to ensure content is shown correctly after JS init */
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Logo Styles */
+.logo-container {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Explore Section */
+.explore-container {
+  position: relative;
+  width: 100%;
+  height: 15%;
+  margin: 0 0 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-text {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+}
+
+.explore-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+}
+
+/* Collection Items */
+.collection-items {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 58%;
+  margin: 0;
+  gap: 1%;
+  flex-wrap: wrap;
+}
+
+.item-wrapper {
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 150px;
+  aspect-ratio: 1 / 1;
+  will-change: transform; /* Optimize for animations */
+}
+
+.image-container {
+  border-radius: 10px;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-item {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+.item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+/* Hover Effects */
+@media (hover: hover) {
+  .item-wrapper:hover .collection-item {
+    transform: scale(1.05);
+  }
+
+  .item-wrapper:hover .item-overlay {
+    opacity: 1;
+  }
+}
+
+/* Custom Cursors */
+body,
+a,
+.item-wrapper {
+  cursor: url("https://raw.githubusercontent.com/signuppotter/Paloma2/a5d8ee0c35aab18747978bd3a01e5313c55980f4/NormalPointer.svg"),
+    auto;
+}
+
+a:hover,
+.item-wrapper:hover {
+  cursor: url("https://raw.githubusercontent.com/signuppotter/Paloma2/a5d8ee0c35aab18747978bd3a01e5313c55980f4/HoverPointer.svg"),
+    pointer;
+}
+
+a:active,
+.item-wrapper:active,
+a:focus,
+.item-wrapper:focus {
+  cursor: url("https://raw.githubusercontent.com/signuppotter/Paloma2/4e6826a95083d4f29aa233ee8fe97492a91cfaea/ClickPointer.svg"),
+    pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .collection-items {
+    flex-wrap: wrap;
+    gap: 2%;
+    justify-content: space-around;
+    height: auto;
+  }
+
+  .item-wrapper {
+    flex: 0 0 48%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 2%;
+  }
+  .logo-container {
+    height: 20%;
+  }
+
+  .explore-container {
+    height: 10%;
+    margin-bottom: 3%;
+  }
+}
